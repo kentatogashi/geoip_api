@@ -1,0 +1,15 @@
+[Unit]
+Description=geoip_api daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/geoip_api
+RemainAfterExit=yes
+ExecStart=/usr/bin/nohup /geoip_api/main.py &
+Restart=always
+SyslogIdentifier=geoip_api
+
+[Install]
+WantedBy=multi-user.target
