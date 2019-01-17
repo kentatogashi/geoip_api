@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 import os
-from flask import Flask, make_response, request
 import geoip2.database
+from datetime import datetime as dt
+from flask import Flask, make_response, request
 
 PORT=80
 MMDB_CC=os.path.join(os.path.abspath(os.path.dirname(__file__)), 'mmdb/GeoLite2-Country.mmdb')
@@ -52,6 +53,12 @@ def get_asn(ip):
 @app.route('/ip2aso/<ip>', methods=['GET'])
 def get_aso(ip):
     return make_response(ip2aso(ip))
+
+@app.route('/mmdb_timestamp', methods=['GET'])
+def get_mmdb_timestamp():
+    ctime = os.stat(MMDB_CC).st_ctime
+    mmdb_timestamp = dt.strftime(dt.fromtimestamp(int(ctime)), '%Y/%m/%d %H:%M')
+    return make_response(mmdb_timestamp)
 
 @app.errorhandler(500)
 def invalid_ip(error):
