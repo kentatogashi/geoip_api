@@ -1,2 +1,1 @@
-release: ./tools/update_mmdb.sh
-web: gunicorn main:app
+web: ./tools/update_mmdb.sh && gunicorn main:app
