@@ -1,10 +1,5 @@
 #!/usr/bin/python3
-
 import os
-import sys
-
-ver = '.'.join(map(str, sys.version_info[0:2]))
-sys.path.append(os.path.join(os.path.dirname(__file__), '.././local/python%s/site-packages' % ver))
 from flask import Flask, make_response, request
 import geoip2.database
 
