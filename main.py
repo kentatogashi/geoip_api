@@ -28,6 +28,24 @@ def ip2aso(ip):
     aso = reader.asn(ip).autonomous_system_organization
     return aso
 
+@app.route('/', methods=['GET'])
+def get_license():
+    text = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset='UTF-8'>
+    <title>geoip api</title>
+    </head>
+    <body>
+    <p>IPアドレスから、国名、AS番号、AS組織を取得するAPIです。</p>
+    <p>使い方は、<a href= 'https://github.com/kentatogashi/geoip_api/blob/master/README.md'>https://github.com/kentatogashi/geoip_api/blob/master/README.md</a>を参照してください。</p>
+    <p>この製品には MaxMind が作成した GeoLite2 データが含まれており、<a href="http://www.maxmind.com">http://www.maxmind.com</a> から入手いただけます。</p>
+    </body>
+    </html>
+    """
+    return make_response(text)
+
 @app.route('/ip2cc/<ip>', methods=['GET'])
 def get_cc(ip):
     return make_response(ip2cc(ip))
@@ -39,11 +57,6 @@ def get_asn(ip):
 @app.route('/ip2aso/<ip>', methods=['GET'])
 def get_aso(ip):
     return make_response(ip2aso(ip))
-
-@app.route('/license', methods=['GET'])
-def get_license():
-    license_text = 'この製品には MaxMind が作成した GeoLite2 データが含まれており、<a href="http://www.maxmind.com">http://www.maxmind.com</a> から入手いただけます。'
-    return make_response(license_text)
 
 @app.errorhandler(500)
 def invalid_ip(error):
