@@ -1,5 +1,9 @@
 # geoip_api
 
+## Author
+
+kentatogashi@example.com
+
 ## How to use
 
 ### get country code from ip
