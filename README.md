@@ -9,7 +9,7 @@ $ curl https://geoipapi.herokuapp.com/ip2cc/8.8.8.8;echo
 US
 ```
 
-### get autonomous system organization from ip
+### get autonomous system number from ip
 
 ```
 $ curl https://geoipapi.herokuapp.com/ip2asn/8.8.8.8;echo
