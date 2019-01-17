@@ -40,6 +40,11 @@ def get_asn(ip):
 def get_aso(ip):
     return make_response(ip2aso(ip))
 
+@app.route('/license', methods=['GET'])
+def get_license():
+    license_text = 'この製品には MaxMind が作成した GeoLite2 データが含まれており、<a href="http://www.maxmind.com">http://www.maxmind.com</a> から入手いただけます。'
+    return make_response(license_text)
+
 @app.errorhandler(500)
 def invalid_ip(error):
     return make_response('Internal Server Error', 500)
