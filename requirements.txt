@@ -1,3 +1,4 @@
 geoip2
 Flask
 flask-cors
+gunicorn
